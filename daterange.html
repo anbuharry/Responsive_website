@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+   <head>
+      <meta charset="UTF-8" />
+      <title>A date range picker for Bootstrap</title>
+
+      <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />-->
+
+      <link rel="stylesheet" type="text/css" media="all" href="daterange.css" />
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+
+      <script type="text/javascript" src="daterange.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+   </head>
+   <body align="center"; style="background-image: url(./images/yellow_bg.jpeg); " ></body>
+
+      <div class="container">
+
+       
+
+        <div class="well configurator">
+           
+          <form>
+          <div class="row">
+
+            <div class="col-md-4">
+
+              <div class="form-group">
+                <label for="parentEl" label hidden="hidden">>parentEl</label>
+                <input type="text" class="form-control" id="parentEl" value="" placeholder="body" label hidden="hidden">
+              </div>
+
+              <div class="form-group">
+                <label for="startDate" label hidden="hidden">startDate</label>
+                <input type="text" class="form-control" id="startDate" value="07/01/2015" label hidden="hidden">
+              </div>
+
+              <div class="form-group">
+                <label for="endDate" label hidden="hidden">endDate</label>
+                <input type="text" class="form-control" id="endDate" value="07/15/2015"label hidden="hidden">
+              </div>
+
+              <div class="form-group">
+                <label for="minDate" label hidden="hidden">minDate</label>
+                <input type="text" class="form-control" id="minDate" value="" placeholder="MM/DD/YYYY"label hidden="hidden">
+              </div>
+
+              <div class="form-group">
+                <label for="maxDate" label hidden="hidden">maxDate</label>
+                <input type="text" class="form-control" id="maxDate" value="" placeholder="MM/DD/YYYY"label hidden="hidden">
+              </div>
+
+            </div>
+            <div class="col-md-4">
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" label hidden="hidden" id="autoApply" label hidden="hidden"> 
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="singleDatePicker" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="showDropdowns" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="showWeekNumbers" label hidden="hidden">
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="showISOWeekNumbers" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="timePicker" checked="checked" label hidden="hidden">
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="timePicker24Hour" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label for="timePickerIncrement"></label>
+                <input type="text" class="form-control" id="timePickerIncrement" value="1" label hidden="hidden">
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="timePickerSeconds" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="dateLimit" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="ranges" checked="checked" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="locale" label hidden="hidden"> 
+                </label>
+                <label id="rtl-wrap">
+                  <input type="checkbox" id="rtl" label hidden="hidden">
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="alwaysShowCalendars" label hidden="hidden">
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-4">
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="linkedCalendars" checked="checked" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="autoUpdateInput" checked="checked" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="showCustomRangeLabel" checked="checked" label hidden="hidden"> 
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label for="opens" label hidden="hidden"></label>
+                <select id="opens" class="form-control" label hidden="hidden">
+                  <option value="right" selected></option>
+                  <option value="left"></option>
+                  <option value="center"></option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="drops" label hidden="hidden"></label>
+                <select id="drops" label hidden="hidden" class="form-control">
+                  <option value="down" selected></option>
+                  <option value="up"></option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="buttonClasses" label hidden="hidden"></label>
+                <input type="text" class="form-control" label hidden="hidden" id="buttonClasses" value="btn btn-sm" label hidden="hidden">
+              </div>
+
+              <div class="form-group">
+                <label for="applyClass"></label>
+                <input type="text" class="form-control" id="applyClass" value="btn-success" label hidden="hidden">
+              </div>
+
+              <div class="form-group">
+                <!-- <label for="cancelClass">cancelClass</label> -->
+                <input type="text" class="form-control" id="cancelClass" value="btn-default" label hidden="hidden">
+              </div>
+
+            </div>
+
+          </div>
+          </form>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-4 col-md-offset-2 demo">
+            <h4>Your Date Range Picker</h4>
+            <left>
+              <input type="text" id="config-demo" class="form-control">
+            </left>
+          </div>
+
+          
+
+      <style type="text/css">
+      .demo { position: relative; }
+      .demo i {
+        position: absolute; bottom: 10px; right: 24px; top: auto; cursor: pointer;
+      }
+      </style>
+
+      <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('#config-text').keyup(function() {
+          eval($(this).val());
+        });
+        
+        $('.configurator input, .configurator select').change(function() {
+          updateConfig();
+        });
+
+        $('.demo i').click(function() {
+          $(this).parent().find('input').click();
+        });
+
+        $('#startDate').daterangepicker({
+          singleDatePicker: true,
+          startDate: moment().subtract(6, 'days')
+        });
+
+        $('#endDate').daterangepicker({
+          singleDatePicker: true,
+          startDate: moment()
+        });
+
+        updateConfig();
+
+        function updateConfig() {
+          var options = {};
+
+          if ($('#singleDatePicker').is(':checked'))
+            options.singleDatePicker = true;
+          
+          if ($('#showDropdowns').is(':checked'))
+            options.showDropdowns = true;
+
+          if ($('#showWeekNumbers').is(':checked'))
+            options.showWeekNumbers = true;
+
+          if ($('#showISOWeekNumbers').is(':checked'))
+            options.showISOWeekNumbers = true;
+
+          if ($('#timePicker').is(':checked'))
+            options.timePicker = true;
+          
+          if ($('#timePicker24Hour').is(':checked'))
+            options.timePicker24Hour = true;
+
+          if ($('#timePickerIncrement').val().length && $('#timePickerIncrement').val() != 1)
+            options.timePickerIncrement = parseInt($('#timePickerIncrement').val(), 10);
+
+          if ($('#timePickerSeconds').is(':checked'))
+            options.timePickerSeconds = true;
+          
+          if ($('#autoApply').is(':checked'))
+            options.autoApply = true;
+
+          if ($('#dateLimit').is(':checked'))
+            options.dateLimit = { days: 7 };
+
+          if ($('#ranges').is(':checked')) {
+            options.ranges = {
+              'Today': [moment(), moment()],
+              'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+              'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+              'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+              'This Month': [moment().startOf('month'), moment().endOf('month')],
+              'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            };
+          }
+
+          if ($('#locale').is(':checked')) {
+            $('#rtl-wrap').show();
+            options.locale = {
+              direction: $('#rtl').is(':checked') ? 'rtl' : 'ltr',
+              format: 'MM/DD/YYYY HH:mm',
+              separator: ' - ',
+              applyLabel: 'Apply',
+              cancelLabel: 'Cancel',
+              fromLabel: 'From',
+              toLabel: 'To',
+              customRangeLabel: 'Custom',
+              daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+              monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+              firstDay: 1
+            };
+          } else {
+            $('#rtl-wrap').hide();
+          }
+
+          if (!$('#linkedCalendars').is(':checked'))
+            options.linkedCalendars = false;
+
+          if (!$('#autoUpdateInput').is(':checked'))
+            options.autoUpdateInput = false;
+
+          if (!$('#showCustomRangeLabel').is(':checked'))
+            options.showCustomRangeLabel = false;
+
+          if ($('#alwaysShowCalendars').is(':checked'))
+            options.alwaysShowCalendars = true;
+
+          if ($('#parentEl').val().length)
+            options.parentEl = $('#parentEl').val();
+
+          if ($('#startDate').val().length) 
+            options.startDate = $('#startDate').val();
+
+          if ($('#endDate').val().length)
+            options.endDate = $('#endDate').val();
+          
+          if ($('#minDate').val().length)
+            options.minDate = $('#minDate').val();
+
+          if ($('#maxDate').val().length)
+            options.maxDate = $('#maxDate').val();
+
+          if ($('#opens').val().length && $('#opens').val() != 'right')
+            options.opens = $('#opens').val();
+
+          if ($('#drops').val().length && $('#drops').val() != 'down')
+            options.drops = $('#drops').val();
+
+          if ($('#buttonClasses').val().length && $('#buttonClasses').val() != 'btn btn-sm')
+            options.buttonClasses = $('#buttonClasses').val();
+
+          if ($('#applyClass').val().length && $('#applyClass').val() != 'btn-success')
+            options.applyClass = $('#applyClass').val();
+
+          if ($('#cancelClass').val().length && $('#cancelClass').val() != 'btn-default')
+            options.cancelClass = $('#cancelClass').val();
+
+          $('#config-text').val("$('#demo').daterangepicker(" + JSON.stringify(options, null, '    ') + ", function(start, end, label) {\n  console.log(\"New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')\");\n});");
+
+          $('#config-demo').daterangepicker(options, function(start, end, label) { console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')'); }).click();;
+          
+        }
+
+      });
+      </script>
+    <!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+<style>
+  .btn {
+    background-color: rgb(22, 2, 2);
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-size: 20px;
+
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: RoyalBlue;
+  }
+  </style>
+  </head>
+  <body>
+  <button class="btn"  style = "position:absolute; left:1200px; top:450px; background-color:rgb(248, 247, 247);"> <a href="video.html">Submit</a></button>
+  </body>
+</body>
+</html>
